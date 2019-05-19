@@ -1,0 +1,26 @@
+workspace:
+  base: /go
+  path: src/gitea.com/lunny/tango
+
+clone:
+  git:
+    image: plugins/git:next
+    depth: 50
+    tags: true
+
+matrix:
+  GO_VERSION:
+    - 1.8
+    - 1.9
+    - 1.10
+    - 1.11
+
+pipeline:
+  test:
+    image: golang:${GO_VERSION}
+    commands:
+      - go get -t -d -v ./...
+      - go build -v
+      - go test -v -race -coverprofile=coverage.txt -covermode=atomic
+    when:
+      event: [ push, pull_request ]
