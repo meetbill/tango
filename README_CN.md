@@ -1,5 +1,5 @@
 Tango [![Build Status](https://drone.gitea.com/api/badges/lunny/tango/status.svg)](https://drone.gitea.com/lunny/tango)  [![codecov](https://codecov.io/gh/lunny/tango/branch/master/graph/badge.svg)](https://codecov.io/gh/lunny/tango)
-[![](https://goreportcard.com/badge/github.com/lunny/tango)](https://goreportcard.com/report/github.com/lunny/tango)
+[![](https://goreportcard.com/badge/github.com/lunny/tango)](https://goreportcard.com/report/gitea.com/lunny/tango)
 [![Join the chat at https://img.shields.io/discord/323705316027924491.svg](https://img.shields.io/discord/323705316027924491.svg)](https://discord.gg/7Ckxjwu)
 [English](README.md)
 =======================
@@ -12,7 +12,7 @@ Tango 是一个微内核的Go语言Web框架，采用模块化和注入式的设
 - [2016-5-12] 开放Route级别中间件支持
 - [2016-3-16] Group完善中间件支持，Route支持中间件
 - [2016-2-1] 新增 session-ssdb，支持将ssdb作为session的后端存储
-- [2015-10-23] 更新[renders](https://github.com/tango-contrib/renders)插件，解决模板修改后需要刷新两次才能生效的问题
+- [2015-10-23] 更新[renders](https://gitea.com/tango/renders)插件，解决模板修改后需要刷新两次才能生效的问题
 
 ## 特性
 - 强大而灵活的路由设计
@@ -22,7 +22,7 @@ Tango 是一个微内核的Go语言Web框架，采用模块化和注入式的设
 
 ## 安装Tango：
 
-    go get github.com/lunny/tango
+    go get gitea.com/lunny/tango
 
 ## 快速入门
 
@@ -33,7 +33,8 @@ package main
 
 import (
     "errors"
-    "github.com/lunny/tango"
+
+    "gitea.com/lunny/tango"
 )
 
 type Action struct {
@@ -73,8 +74,8 @@ func main() {
 ## 文档
 
 - [Manual](http://gobook.io/read/github.com/go-tango/manual-en-US/), And you are welcome to contribue for the book by git PR to [github.com/go-tango/manual-en-US](https://github.com/go-tango/manual-en-US)
-- [操作手册](http://gobook.io/read/github.com/go-tango/manual-zh-CN/)，您也可以访问 [github.com/go-tango/manual-zh-CN](https://github.com/go-tango/manual-zh-CN)为本手册进行贡献
-- [API Reference](https://gowalker.org/github.com/lunny/tango)
+- [操作手册](http://gobook.io/read/github.com/go-tango/manual-zh-CN/)，您也可以访问 [gitea.com/tango/manual-zh-CN](https://gitea.com/tango/manual-zh-CN)为本手册进行贡献
+- [API Reference](https://godoc.org/gitea.com/lunny/tango)
 
 ## 交流讨论
 
@@ -94,29 +95,29 @@ func main() {
 
 ## 中间件列表
 
-[中间件](https://github.com/tango-contrib)可以重用代码并且简化工作：
+[中间件](https://gitea.com/tango)可以重用代码并且简化工作：
 
-- [recovery](https://github.com/lunny/tango/wiki/Recovery) - recover after panic
-- [compress](https://github.com/lunny/tango/wiki/Compress) - Gzip & Deflate compression
-- [static](https://github.com/lunny/tango/wiki/Static) - Serves static files
-- [logger](https://github.com/lunny/tango/wiki/Logger) - Log the request & inject Logger to action struct
-- [param](https://github.com/lunny/tango/wiki/Params) - get the router parameters
-- [return](https://github.com/lunny/tango/wiki/Return) - Handle the returned value smartlly
-- [context](https://github.com/lunny/tango/wiki/Context) - Inject context to action struct
-- [session](https://github.com/tango-contrib/session) - [![CircleCI](https://circleci.com/gh/tango-contrib/session/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/session/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/session/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/session) Session manager, [session-redis](http://github.com/tango-contrib/session-redis), [session-nodb](http://github.com/tango-contrib/session-nodb), [session-ledis](http://github.com/tango-contrib/session-ledis), [session-ssdb](http://github.com/tango-contrib/session-ssdb)
-- [xsrf](https://github.com/tango-contrib/xsrf) - [![CircleCI](https://circleci.com/gh/tango-contrib/xsrf/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/xsrf/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/xsrf/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/xsrf) Generates and validates csrf tokens
-- [binding](https://github.com/tango-contrib/binding) - [![CircleCI](https://circleci.com/gh/tango-contrib/binding/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/binding/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/binding/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/binding) Bind and validates forms
-- [renders](https://github.com/tango-contrib/renders) - [![CircleCI](https://circleci.com/gh/tango-contrib/renders/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/renders/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/renders/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/renders) Go template engine
-- [dispatch](https://github.com/tango-contrib/dispatch) - [![CircleCI](https://circleci.com/gh/tango-contrib/dispatch/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/dispatch/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/dispatch/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/dispatch) Multiple Application support on one server
-- [tpongo2](https://github.com/tango-contrib/tpongo2) - [![CircleCI](https://circleci.com/gh/tango-contrib/tpongo2/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/tpongo2/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/tpongo2/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/tpongo2) [Pongo2](https://github.com/flosch/pongo2) teamplte engine support
-- [captcha](https://github.com/tango-contrib/captcha) - [![CircleCI](https://circleci.com/gh/tango-contrib/captcha/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/captcha/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/captcha/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/captcha) Captcha
-- [events](https://github.com/tango-contrib/events) - [![CircleCI](https://circleci.com/gh/tango-contrib/events/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/events/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/events/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/events) Before and After
-- [flash](https://github.com/tango-contrib/flash) - [![CircleCI](https://circleci.com/gh/tango-contrib/flash/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/flash/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/flash/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/flash) Share data between requests
-- [debug](https://github.com/tango-contrib/debug) - [![CircleCI](https://circleci.com/gh/tango-contrib/debug/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/debug/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/debug/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/debug) show detail debug infomaton on log
-- [basicauth](https://github.com/tango-contrib/basicauth) - [![CircleCI](https://circleci.com/gh/tango-contrib/basicauth/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/basicauth/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/basicauth/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/basicauth) basicauth middleware
-- [authz](https://github.com/tango-contrib/authz) - [![Build Status](https://travis-ci.org/tango-contrib/authz.svg?branch=master)](https://travis-ci.org/tango-contrib/authz) [![Coverage Status](https://coveralls.io/repos/github/tango-contrib/authz/badge.svg?branch=master)](https://coveralls.io/github/tango-contrib/authz?branch=master) manage permissions via ACL, RBAC, ABAC
-- [cache](https://github.com/tango-contrib/cache) - [![CircleCI](https://circleci.com/gh/tango-contrib/cache/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/cache/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/cache/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/cache) cache middleware - cache-memory, cache-file, [cache-ledis](https://github.com/tango-contrib/cache-ledis), [cache-nodb](https://github.com/tango-contrib/cache-nodb), [cache-mysql](https://github.com/tango-contrib/cache-mysql), [cache-postgres](https://github.com/tango-contrib/cache-postgres), [cache-memcache](https://github.com/tango-contrib/cache-memcache), [cache-redis](https://github.com/tango-contrib/cache-redis)
-- [rbac](https://github.com/tango-contrib/rbac) - [![CircleCI](https://circleci.com/gh/tango-contrib/rbac/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/rbac/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/rbac/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/rbac) rbac control
+- [recovery](https://gitea.com/lunny/tango/wiki/Recovery) - recover after panic
+- [compress](https://gitea.com/lunny/tango/wiki/Compress) - Gzip & Deflate compression
+- [static](https://gitea.com/lunny/tango/wiki/Static) - Serves static files
+- [logger](https://gitea.com/lunny/tango/wiki/Logger) - Log the request & inject Logger to action struct
+- [param](https://gitea.com/lunny/tango/wiki/Params) - get the router parameters
+- [return](https://gitea.com/lunny/tango/wiki/Return) - Handle the returned value smartlly
+- [context](https://gitea.com/lunny/tango/wiki/Context) - Inject context to action struct
+- [session](https://gitea.com/tango/session) - [![CircleCI](https://circleci.com/gh/tango-contrib/session/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/session/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/session/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/session) Session manager, [session-redis](http://gitea.com/tango/session-redis), [session-nodb](http://gitea.com/tango/session-nodb), [session-ledis](http://gitea.com/tango/session-ledis), [session-ssdb](http://gitea.com/tango/session-ssdb)
+- [xsrf](https://gitea.com/tango/xsrf) - [![CircleCI](https://circleci.com/gh/tango-contrib/xsrf/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/xsrf/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/xsrf/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/xsrf) Generates and validates csrf tokens
+- [binding](https://gitea.com/tango/binding) - [![CircleCI](https://circleci.com/gh/tango-contrib/binding/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/binding/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/binding/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/binding) Bind and validates forms
+- [renders](https://gitea.com/tango/renders) - [![CircleCI](https://circleci.com/gh/tango-contrib/renders/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/renders/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/renders/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/renders) Go template engine
+- [dispatch](https://gitea.com/tango/dispatch) - [![CircleCI](https://circleci.com/gh/tango-contrib/dispatch/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/dispatch/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/dispatch/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/dispatch) Multiple Application support on one server
+- [tpongo2](https://gitea.com/tango/tpongo2) - [![CircleCI](https://circleci.com/gh/tango-contrib/tpongo2/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/tpongo2/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/tpongo2/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/tpongo2) [Pongo2](https://github.com/flosch/pongo2) teamplte engine support
+- [captcha](https://gitea.com/tango/captcha) - [![CircleCI](https://circleci.com/gh/tango-contrib/captcha/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/captcha/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/captcha/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/captcha) Captcha
+- [events](https://gitea.com/tango/events) - [![CircleCI](https://circleci.com/gh/tango-contrib/events/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/events/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/events/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/events) Before and After
+- [flash](https://gitea.com/tango/flash) - [![CircleCI](https://circleci.com/gh/tango-contrib/flash/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/flash/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/flash/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/flash) Share data between requests
+- [debug](https://gitea.com/tango/debug) - [![CircleCI](https://circleci.com/gh/tango-contrib/debug/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/debug/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/debug/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/debug) show detail debug infomaton on log
+- [basicauth](https://gitea.com/tango/basicauth) - [![CircleCI](https://circleci.com/gh/tango-contrib/basicauth/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/basicauth/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/basicauth/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/basicauth) basicauth middleware
+- [authz](https://gitea.com/tango/authz) - [![Build Status](https://travis-ci.org/tango-contrib/authz.svg?branch=master)](https://travis-ci.org/tango-contrib/authz) [![Coverage Status](https://coveralls.io/repos/github/tango-contrib/authz/badge.svg?branch=master)](https://coveralls.io/github/tango-contrib/authz?branch=master) manage permissions via ACL, RBAC, ABAC
+- [cache](https://gitea.com/tango/cache) - [![CircleCI](https://circleci.com/gh/tango-contrib/cache/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/cache/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/cache/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/cache) cache middleware - cache-memory, cache-file, [cache-ledis](https://gitea.com/tango/cache-ledis), [cache-nodb](https://gitea.com/tango/cache-nodb), [cache-mysql](https://gitea.com/tango/cache-mysql), [cache-postgres](https://gitea.com/tango/cache-postgres), [cache-memcache](https://gitea.com/tango/cache-memcache), [cache-redis](https://gitea.com/tango/cache-redis)
+- [rbac](https://gitea.com/tango/rbac) - [![CircleCI](https://circleci.com/gh/tango-contrib/rbac/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/rbac/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/rbac/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/rbac) rbac control
 
 ## License
 This project is under BSD License. See the [LICENSE](LICENSE) file for the full license text.

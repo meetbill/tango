@@ -6,7 +6,7 @@
 
 // 	package main
 
-// 	import "github.com/lunny/tango"
+// 	import "gitea.com/lunny/tango"
 
 // 	type Action struct {
 // 	}
@@ -23,7 +23,7 @@
 
 // Middlewares allow you easily plugin/unplugin features for your Tango applications.
 
-// There are already many [middlewares](https://github.com/tango-contrib) to simplify your work:
+// There are already many [middlewares](https://gitea.com/tango) to simplify your work:
 
 // - recovery - recover after panic
 // - compress - Gzip & Deflate compression
@@ -33,19 +33,19 @@
 // - return - Handle the returned value smartlly
 // - ctx - Inject context to action struct
 
-// - [session](https://github.com/tango-contrib/session) - Session manager, with stores support:
+// - [session](https://gitea.com/tango/session) - Session manager, with stores support:
 //   * Memory - memory as a session store
-//   * [Redis](https://github.com/tango-contrib/session-redis) - redis server as a session store
-//   * [nodb](https://github.com/tango-contrib/session-nodb) - nodb as a session store
-//   * [ledis](https://github.com/tango-contrib/session-ledis) - ledis server as a session store)
-// - [xsrf](https://github.com/tango-contrib/xsrf) - Generates and validates csrf tokens
-// - [binding](https://github.com/tango-contrib/binding) - Bind and validates forms
-// - [renders](https://github.com/tango-contrib/renders) - Go template engine
-// - [dispatch](https://github.com/tango-contrib/dispatch) - Multiple Application support on one server
-// - [tpongo2](https://github.com/tango-contrib/tpongo2) - Pongo2 teamplte engine support
-// - [captcha](https://github.com/tango-contrib/captcha) - Captcha
-// - [events](https://github.com/tango-contrib/events) - Before and After
-// - [flash](https://github.com/tango-contrib/flash) - Share data between requests
-// - [debug](https://github.com/tango-contrib/debug) - Show detail debug infomaton on log
+//   * [Redis](https://gitea.com/tango/session-redis) - redis server as a session store
+//   * [nodb](https://gitea.com/tango/session-nodb) - nodb as a session store
+//   * [ledis](https://gitea.com/tango/session-ledis) - ledis server as a session store)
+// - [xsrf](https://gitea.com/tango/xsrf) - Generates and validates csrf tokens
+// - [binding](https://gitea.com/tango/binding) - Bind and validates forms
+// - [renders](https://gitea.com/tango/renders) - Go template engine
+// - [dispatch](https://gitea.com/tango/dispatch) - Multiple Application support on one server
+// - [tpongo2](https://gitea.com/tango/tpongo2) - Pongo2 teamplte engine support
+// - [captcha](https://gitea.com/tango/captcha) - Captcha
+// - [events](https://gitea.com/tango/events) - Before and After
+// - [flash](https://gitea.com/tango/flash) - Share data between requests
+// - [debug](https://gitea.com/tango/debug) - Show detail debug infomaton on log
 
 package tango
