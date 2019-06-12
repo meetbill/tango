@@ -78,6 +78,125 @@ func TestReturnPut(t *testing.T) {
 	expect(t, buff.String(), "error return")
 }
 
+type MyReturn2 struct {
+}
+
+func (m MyReturn2) Any() string {
+	return "string return"
+}
+
+func TestReturn2(t *testing.T) {
+	buff := bytes.NewBufferString("")
+	recorder := httptest.NewRecorder()
+	recorder.Body = buff
+
+	o := Classic()
+	o.Any("/", new(MyReturn2))
+
+	req, err := http.NewRequest("GET", "http://localhost:8000/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	refute(t, len(buff.String()), 0)
+	expect(t, buff.String(), "string return")
+
+	buff.Reset()
+	req, err = http.NewRequest("POST", "http://localhost:8000/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	refute(t, len(buff.String()), 0)
+	expect(t, buff.String(), "string return")
+}
+
+type MyReturn3 struct {
+	JSON
+}
+
+func (m MyReturn3) Any() interface{} {
+	return map[string]interface{}{
+		"a": "b",
+	}
+}
+
+func TestReturn3(t *testing.T) {
+	buff := bytes.NewBufferString("")
+	recorder := httptest.NewRecorder()
+	recorder.Body = buff
+
+	o := Classic()
+	o.Any("/", new(MyReturn3))
+
+	req, err := http.NewRequest("GET", "http://localhost:8000/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	refute(t, len(buff.String()), 0)
+	expect(t, strings.TrimSpace(buff.String()), `{"a":"b"}`)
+
+	buff.Reset()
+	req, err = http.NewRequest("POST", "http://localhost:8000/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	refute(t, len(buff.String()), 0)
+	expect(t, strings.TrimSpace(buff.String()), `{"a":"b"}`)
+}
+
+type MyReturn4 struct {
+	JSON
+}
+
+func (m MyReturn4) Any() interface{} {
+	return map[string]interface{}{
+		"a": "b",
+	}
+}
+
+func TestReturn4(t *testing.T) {
+	buff := bytes.NewBufferString("")
+	recorder := httptest.NewRecorder()
+	recorder.Body = buff
+
+	o := Classic()
+	o.Group("/1", func(g *Group) {
+		g.Any("/", new(MyReturn4))
+	})
+
+	req, err := http.NewRequest("GET", "http://localhost:8000/1", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	refute(t, len(buff.String()), 0)
+	expect(t, strings.TrimSpace(buff.String()), `{"a":"b"}`)
+
+	buff.Reset()
+	req, err = http.NewRequest("POST", "http://localhost:8000/1", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	refute(t, len(buff.String()), 0)
+	expect(t, strings.TrimSpace(buff.String()), `{"a":"b"}`)
+}
+
 type JSONReturn struct {
 	JSON
 }
