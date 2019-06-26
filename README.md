@@ -2,7 +2,7 @@ Tango [简体中文](README_CN.md)
 =======================
 
 [![Build Status](https://drone.gitea.com/api/badges/lunny/tango/status.svg)](https://drone.gitea.com/lunny/tango) [![](http://gocover.io/_badge/gitea.com/lunny/tango)](http://gocover.io/gitea.com/lunny/tango)
-[![](https://goreportcard.com/badge/github.com/lunny/tango)](https://goreportcard.com/report/gitea.com/lunny/tango)
+[![](https://goreportcard.com/badge/gitea.com/lunny/tango)](https://goreportcard.com/report/gitea.com/lunny/tango)
 [![Join the chat at https://img.shields.io/discord/323705316027924491.svg](https://img.shields.io/discord/323705316027924491.svg)](https://discord.gg/7Ckxjwu)
 
 ![Tango Logo](logo.png)
@@ -109,11 +109,11 @@ There are already many [middlewares](https://gitea.com/tango) to simplify your w
 ## Cases
 
 - [GopherTC](https://github.com/jimmykuu/gopher/tree/2.0) - China Discuss Forum
-- [Wego](https://github.com/go-tango/wego) - Discuss Forum
-- [dbweb](https://github.com/go-xorm/dbweb) - DB management web UI
-- [Godaily](http://godaily.org) - [github](https://github.com/godaily/news)
+- [Wego](https://gitea.com/tango/wego) - Discuss Forum
+- [dbweb](https://gitea.com/xorm/dbweb) - DB management web UI
+- [Godaily](http://godaily.org) - [gitea](https://gitea.com/godaily/news)
 - [Pugo](https://github.com/go-xiaohei/pugo) - A pugo blog
-- [Gos](https://github.com/go-tango/gos) - Static web server
+- [Gos](https://gitea.com/tango/gos) - Static web server
 - [GoFtpd](https://github.com/goftp/ftpd) - Pure Go cross-platform ftp server
 
 ## License
