@@ -437,7 +437,7 @@ func TestContextDecodeXML(t *testing.T) {
 }
 
 type ActionTag struct {
-	Name string `name`
+	Name string `tag:"name"`
 }
 
 func (a *ActionTag) Get() interface{} {
@@ -459,9 +459,7 @@ func TestContextActionTag(t *testing.T) {
 		}
 
 		tagName := ctx.ActionTag("Name")
-		if tagName == "name" {
-			fmt.Println("find the action")
-		}
+		expect(t, `tag:"name"`, tagName)
 	}))
 	o.Get("/", new(ActionTag))
 
