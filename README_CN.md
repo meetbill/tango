@@ -1,5 +1,5 @@
 Tango [![Build Status](https://drone.gitea.com/api/badges/lunny/tango/status.svg)](https://drone.gitea.com/lunny/tango)  [![](http://gocover.io/_badge/gitea.com/lunny/tango)](http://gocover.io/gitea.com/lunny/tango)
-[![](https://goreportcard.com/badge/github.com/lunny/tango)](https://goreportcard.com/report/gitea.com/lunny/tango)
+[![](https://goreportcard.com/badge/gitea.com/lunny/tango)](https://goreportcard.com/report/gitea.com/lunny/tango)
 [![Join the chat at https://img.shields.io/discord/323705316027924491.svg](https://img.shields.io/discord/323705316027924491.svg)](https://discord.gg/7Ckxjwu)
 [English](README.md)
 =======================
