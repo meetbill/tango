@@ -853,3 +853,31 @@ func TestForm30(t *testing.T) {
 	refute(t, len(buff.String()), 0)
 	expect(t, buff.String(), "1")
 }
+
+type Form31Action struct {
+	Ctx
+}
+
+func (a *Form31Action) Get() string {
+	v := a.FormTrimmed("test")
+	return fmt.Sprintf("%s", v)
+}
+
+func TestForm31(t *testing.T) {
+	buff := bytes.NewBufferString("")
+	recorder := httptest.NewRecorder()
+	recorder.Body = buff
+
+	o := Classic()
+	o.Get("/", new(Form31Action))
+
+	req, err := http.NewRequest("GET", "http://localhost:8000/?test=1%20", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	refute(t, len(buff.String()), 0)
+	expect(t, buff.String(), "1")
+}

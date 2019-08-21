@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
+	"strings"
 )
 
 // Forms a new enhancement of http.Request
@@ -25,6 +26,11 @@ func (f *Forms) Values() url.Values {
 // String returns request form as string
 func (f *Forms) String(key string) (string, error) {
 	return (*http.Request)(f).FormValue(key), nil
+}
+
+// TrimSpace returns request form as string with trimed spaces left and right
+func (f *Forms) Trimmed(key string) (string, error) {
+	return strings.TrimSpace((*http.Request)(f).FormValue(key)), nil
 }
 
 // Strings returns request form as strings
@@ -99,6 +105,11 @@ func (f *Forms) MustString(key string, defaults ...string) string {
 		return defaults[0]
 	}
 	return ""
+}
+
+// MustTrimmed returns request form as string with default
+func (f *Forms) MustTrimmed(key string, defaults ...string) string {
+	return strings.TrimSpace(f.MustString(key, defaults...))
 }
 
 // MustStrings returns request form as strings with default
@@ -208,6 +219,11 @@ func (f *Forms) MustBool(key string, defaults ...bool) bool {
 // Form returns request form as string with default
 func (ctx *Context) Form(key string, defaults ...string) string {
 	return (*Forms)(ctx.req).MustString(key, defaults...)
+}
+
+// FormTrimmed returns request form as string with default and trimmed spaces
+func (ctx *Context) FormTrimmed(key string, defaults ...string) string {
+	return (*Forms)(ctx.req).MustTrimmed(key, defaults...)
 }
 
 // FormStrings returns request form as strings with default
