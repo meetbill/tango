@@ -4,7 +4,17 @@
 
 package tango
 
-import "path/filepath"
+import (
+	"net/http"
+	"path/filepath"
+)
+
+// Content returns a handle to serve a file
+func Content(path string, fs http.FileSystem) func(ctx *Context) {
+	return func(ctx *Context) {
+		ctx.ServeContent(path, fs)
+	}
+}
 
 // File returns a handle to serve a file
 func File(path string) func(ctx *Context) {
