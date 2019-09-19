@@ -145,7 +145,6 @@ func (f *Queries) MustString(key string, defaults ...string) string {
 
 // MustStrings returns request form as strings with default
 func (f *Queries) MustStrings(key string, defaults ...[]string) []string {
-	(*http.Request)(f).ParseMultipartForm(32 << 20)
 	if v, ok := f.Values()[key]; ok {
 		return v
 	}

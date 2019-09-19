@@ -35,7 +35,9 @@ func (f *Forms) Trimmed(key string) (string, error) {
 
 // Strings returns request form as strings
 func (f *Forms) Strings(key string) ([]string, error) {
-	(*http.Request)(f).ParseMultipartForm(32 << 20)
+	if (*http.Request)(f).Form == nil {
+		(*http.Request)(f).ParseMultipartForm(32 << 20)
+	}
 	if v, ok := (*http.Request)(f).Form[key]; ok {
 		return v, nil
 	}
@@ -114,7 +116,10 @@ func (f *Forms) MustTrimmed(key string, defaults ...string) string {
 
 // MustStrings returns request form as strings with default
 func (f *Forms) MustStrings(key string, defaults ...[]string) []string {
-	(*http.Request)(f).ParseMultipartForm(32 << 20)
+	if (*http.Request)(f).Form == nil {
+		(*http.Request)(f).ParseMultipartForm(32 << 20)
+	}
+
 	if v, ok := (*http.Request)(f).Form[key]; ok {
 		return v
 	}
