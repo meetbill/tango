@@ -802,3 +802,42 @@ func TestRouter10(t *testing.T) {
 	expect(t, buff.String(), "test")
 	refute(t, len(buff.String()), 0)
 }
+
+type Route11Action struct {
+}
+
+func (Route11Action) Any() string {
+	return "any"
+}
+
+func TestRouter11(t *testing.T) {
+	buff := bytes.NewBufferString("")
+	recorder := httptest.NewRecorder()
+	recorder.Body = buff
+
+	r := Classic()
+	r.Get("/", new(Route11Action))
+	r.Post("/2", new(Route11Action))
+
+	req, err := http.NewRequest("GET", "http://localhost:8000/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	r.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	expect(t, buff.String(), "any")
+	refute(t, len(buff.String()), 0)
+
+	buff.Reset()
+
+	req, err = http.NewRequest("POST", "http://localhost:8000/2", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	r.ServeHTTP(recorder, req)
+	expect(t, recorder.Code, http.StatusOK)
+	expect(t, buff.String(), "any")
+	refute(t, len(buff.String()), 0)
+}
