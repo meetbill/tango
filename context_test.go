@@ -473,3 +473,38 @@ func TestContextActionTag(t *testing.T) {
 	expect(t, recorder.Code, http.StatusOK)
 	expect(t, buff.String(), "lunny")
 }
+
+type AnyAnyAction struct {
+	JSON
+}
+
+func (a *AnyAnyAction) Any() interface{} {
+	return map[string]string{
+		"here": "anyany",
+	}
+}
+
+func TestContextAnyAny(t *testing.T) {
+	buff := bytes.NewBufferString("")
+	recorder := httptest.NewRecorder()
+	recorder.Body = buff
+
+	o := New(
+		Logging(),
+		Recovery(false),
+		Return(),
+		Param(),
+		Contexts(),
+	)
+	o.Any("/", new(AnyAnyAction))
+
+	req, err := http.NewRequest("GET", "http://localhost:8000/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+
+	expect(t, recorder.Code, http.StatusOK)
+	expect(t, strings.TrimSpace(buff.String()), `{"here":"anyany"}`)
+}
