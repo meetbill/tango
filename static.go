@@ -155,7 +155,7 @@ func Static(opts ...StaticOptions) HandlerFunc {
 			ctx.Header().Set("Content-Type", "text/html; charset=UTF-8")
 			ctx.WriteString(`<ul style="list-style-type:none;line-height:32px;">`)
 			if rPath != "/" {
-				ctx.WriteString(`<li>&nbsp; &nbsp; <a href="` + path.Join("/", opt.Prefix, filepath.Dir(rPath)) + `/">..</a></li>`)
+				ctx.WriteString(`<li>&nbsp; &nbsp; <a href="` + path.Join("/", opt.Prefix, path.Dir(strings.TrimSuffix(rPath, "/"))) + `/">..</a></li>`)
 			}
 
 			fs, err := f.Readdir(0)
