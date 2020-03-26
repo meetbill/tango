@@ -167,7 +167,7 @@ func Static(opts ...StaticOptions) HandlerFunc {
 
 			for _, fi := range fs {
 				if fi.IsDir() {
-					ctx.WriteString(`<li>┖ <a href="` + path.Join("/", opt.Prefix, rPath, fi.Name()) + `">` + path.Base(fi.Name()) + `</a></li>`)
+					ctx.WriteString(`<li>┖ <a href="` + path.Join("/", opt.Prefix, rPath, fi.Name()) + `/">` + path.Base(fi.Name()) + `</a></li>`)
 				} else {
 					if len(opt.FilterExts) > 0 && !opt.IsFilterExt(fi.Name()) {
 						continue
