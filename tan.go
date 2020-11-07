@@ -5,6 +5,7 @@
 package tango
 
 import (
+	"crypto/tls"
 	"net/http"
 	"os"
 	"strconv"
@@ -21,11 +22,12 @@ func Version() string {
 type Tango struct {
 	http.Server
 	Router
-	handlers   []Handler
-	logger     Logger
-	ErrHandler Handler
-	ctxPool    sync.Pool
-	respPool   sync.Pool
+	handlers      []Handler
+	logger        Logger
+	ErrHandler    Handler
+	ctxPool       sync.Pool
+	respPool      sync.Pool
+	minTLSVersion uint16
 }
 
 var (
@@ -152,8 +154,17 @@ func (t *Tango) Run(args ...interface{}) {
 
 	err := t.ListenAndServe()
 	if err != nil {
-		t.logger.Error(err)
+		if err == http.ErrServerClosed {
+			t.logger.Info("http server closed")
+		} else {
+			t.logger.Error(err)
+		}
 	}
+}
+
+// SetMinTLSVersion set the minial tls version to allow
+func (t *Tango) SetMinTLSVersion(ver uint16) {
+	t.minTLSVersion = ver
 }
 
 // RunTLS runs the https server with special cert and key files
@@ -165,9 +176,22 @@ func (t *Tango) RunTLS(certFile, keyFile string, args ...interface{}) {
 	t.Server.Addr = addr
 	t.Server.Handler = t
 
+	var minTLSVersion = t.minTLSVersion
+	if minTLSVersion == 0 {
+		minTLSVersion = tls.VersionTLS12
+	}
+
+	t.Server.TLSConfig = &tls.Config{
+		MinVersion: minTLSVersion,
+	}
+
 	err := t.ListenAndServeTLS(certFile, keyFile)
 	if err != nil {
-		t.logger.Error(err)
+		if err == http.ErrServerClosed {
+			t.logger.Info("http server closed")
+		} else {
+			t.logger.Error(err)
+		}
 	}
 }
 

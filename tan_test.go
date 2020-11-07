@@ -6,6 +6,8 @@ package tango
 
 import (
 	"bytes"
+	"context"
+	"crypto/tls"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
@@ -43,6 +45,7 @@ func TestTan2(t *testing.T) {
 	o.Get("/", func() string {
 		return Version()
 	})
+	defer o.Shutdown(context.Background())
 	go o.Run()
 
 	time.Sleep(100 * time.Millisecond)
@@ -65,6 +68,7 @@ func TestTan3(t *testing.T) {
 	o.Get("/", func() string {
 		return Version()
 	})
+	defer o.Shutdown(context.Background())
 	go o.Run(":4040")
 
 	time.Sleep(100 * time.Millisecond)
@@ -82,17 +86,29 @@ func TestTan3(t *testing.T) {
 	expect(t, string(bs), Version())
 }
 
-/*
-func TestTan4(t *testing.T) {
+func TestMinTLS(t *testing.T) {
 	o := Classic()
 	o.Get("/", func() string {
 		return Version()
 	})
+	o.SetMinTLSVersion(tls.VersionTLS12)
+	defer o.Shutdown(context.Background())
 	go o.RunTLS("./public/cert.pem", "./public/key.pem", ":5050")
 
 	time.Sleep(100 * time.Millisecond)
 
-	resp, err := http.Get("https://localhost:5050/")
+	client := http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				InsecureSkipVerify: true,
+			},
+		},
+	}
+	req, err := http.NewRequest("GET", "https://localhost:5050/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+	resp, err := client.Do(req)
 	if err != nil {
 		t.Error(err)
 	}
@@ -103,7 +119,37 @@ func TestTan4(t *testing.T) {
 
 	expect(t, resp.StatusCode, http.StatusOK)
 	expect(t, string(bs), Version())
-}*/
+}
+
+func TestMinTLSFail(t *testing.T) {
+	o := Classic()
+	o.Get("/", func() string {
+		return Version()
+	})
+	o.SetMinTLSVersion(tls.VersionTLS12)
+	defer o.Shutdown(context.Background())
+	go o.RunTLS("./public/cert.pem", "./public/key.pem", ":5050")
+
+	time.Sleep(100 * time.Millisecond)
+
+	client := http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				MinVersion:         tls.VersionTLS11,
+				MaxVersion:         tls.VersionTLS11,
+				InsecureSkipVerify: true,
+			},
+		},
+	}
+	req, err := http.NewRequest("GET", "https://localhost:5050/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+	_, err = client.Do(req)
+	if err == nil {
+		t.Error(err)
+	}
+}
 
 /* Test Helpers */
 func expect(t *testing.T, a interface{}, b interface{}) {
