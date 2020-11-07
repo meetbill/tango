@@ -8,12 +8,6 @@ Tango [![Build Status](https://drone.gitea.com/api/badges/lunny/tango/status.svg
 
 Tango 是一个微内核的Go语言Web框架，采用模块化和注入式的设计理念。开发者可根据自身业务逻辑来选择性的装卸框架的功能，甚至利用丰富的中间件来搭建一个全栈式Web开发框架。
 
-## 最近更新
-- [2016-5-12] 开放Route级别中间件支持
-- [2016-3-16] Group完善中间件支持，Route支持中间件
-- [2016-2-1] 新增 session-ssdb，支持将ssdb作为session的后端存储
-- [2015-10-23] 更新[renders](https://gitea.com/tango/renders)插件，解决模板修改后需要刷新两次才能生效的问题
-
 ## 特性
 - 强大而灵活的路由设计
 - 兼容已有的 `http.Handler`
@@ -73,8 +67,8 @@ func main() {
 
 ## 文档
 
-- [Manual](http://gobook.io/read/github.com/go-tango/manual-en-US/), And you are welcome to contribue for the book by git PR to [github.com/go-tango/manual-en-US](https://github.com/go-tango/manual-en-US)
-- [操作手册](http://gobook.io/read/github.com/go-tango/manual-zh-CN/)，您也可以访问 [gitea.com/tango/manual-zh-CN](https://gitea.com/tango/manual-zh-CN)为本手册进行贡献
+- [Manual](http://gobook.io/read/gitea.com/tango/manual-en-US/), And you are welcome to contribue for the book by git PR to [gitea.com/tango/manual-en-US](https://gitea.com/tango/manual-en-US)
+- [操作手册](http://gobook.io/read/gitea.com/tango/manual-zh-CN/)，您也可以访问 [gitea.com/tango/manual-zh-CN](https://gitea.com/tango/manual-zh-CN)为本手册进行贡献
 - [API Reference](https://godoc.org/gitea.com/lunny/tango)
 
 ## 交流讨论
@@ -86,11 +80,11 @@ func main() {
 
 - [会计人论坛](https://www.kuaijiren.com) - 会计人论坛
 - [GopherTC](https://github.com/jimmykuu/gopher/tree/2.0) - Golang China
-- [Wego](https://github.com/go-tango/wego)  tango结合[xorm](http://www.xorm.io/)开发的论坛
+- [Wego](https://gitea.com/tango/wego)  tango结合[xorm](http://www.xorm.io/)开发的论坛
 - [Pugo](https://github.com/go-xiaohei/pugo) 博客
 - [DBWeb](https://github.com/go-xorm/dbweb) 基于Web的数据库管理工具
 - [Godaily](http://godaily.org) - [github](https://github.com/godaily/news) RSS聚合工具
-- [Gos](https://github.com/go-tango/gos)  简易的Web静态文件服务端
+- [Gos](https://gitea.com/tango/gos)  简易的Web静态文件服务端
 - [GoFtpd](https://github.com/goftp/ftpd) - 纯Go的跨平台FTP服务器
 
 ## 中间件列表

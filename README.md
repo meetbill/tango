@@ -9,8 +9,6 @@ Tango [简体中文](README_CN.md)
 
 Package tango is a micro & pluggable web framework for Go.
 
-##### Current version: v0.5.0   [Version History](https://gitea.com/lunny/tango/releases)
-
 ## Getting Started
 
 To install Tango:
@@ -98,7 +96,7 @@ There are already many [middlewares](https://gitea.com/tango) to simplify your w
 ## Documentation
 
 - [Manual](http://gobook.io/read/gitea.com/tango/manual-en-US/), And you are welcome to contribue for the book by git PR to [gitea.com/tango/manual-en-US](https://gitea.com/tango/manual-en-US)
-- [操作手册](http://gobook.io/read/gitea.com/tango/manual-zh-CN/)，您也可以访问 [github.com/go-tango/manual-zh-CN](https://gitea.com/tango/manual-zh-CN)为本手册进行贡献
+- [操作手册](http://gobook.io/read/gitea.com/tango/manual-zh-CN/)，您也可以访问 [gitea.com/tango/manual-zh-CN](https://gitea.com/tango/manual-zh-CN)为本手册进行贡献
 - [API Reference](https://pkg.go.dev/gitea.com/lunny/tango)
 
 ## Discuss
