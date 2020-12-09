@@ -508,3 +508,44 @@ func TestContextAnyAny(t *testing.T) {
 	expect(t, recorder.Code, http.StatusOK)
 	expect(t, strings.TrimSpace(buff.String()), `{"here":"anyany"}`)
 }
+
+type AnyAnyGetAction struct {
+	JSON
+}
+
+func (a *AnyAnyGetAction) Any() interface{} {
+	return map[string]string{
+		"here": "anyany",
+	}
+}
+
+func (a *AnyAnyGetAction) Get() interface{} {
+	return map[string]string{
+		"here": "anyget",
+	}
+}
+
+func TestContextAnyAnyGet(t *testing.T) {
+	buff := bytes.NewBufferString("")
+	recorder := httptest.NewRecorder()
+	recorder.Body = buff
+
+	o := New(
+		Logging(),
+		Recovery(false),
+		Return(),
+		Param(),
+		Contexts(),
+	)
+	o.Any("/", new(AnyAnyGetAction))
+
+	req, err := http.NewRequest("GET", "http://localhost:8000/", nil)
+	if err != nil {
+		t.Error(err)
+	}
+
+	o.ServeHTTP(recorder, req)
+
+	expect(t, recorder.Code, http.StatusOK)
+	expect(t, strings.TrimSpace(buff.String()), `{"here":"anyget"}`)
+}

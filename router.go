@@ -443,8 +443,9 @@ func (r *router) Route(ms interface{}, url string, c interface{}, handlers ...Ha
 			s := strings.Split(ms.(string), ":")
 			r.addFunc([]string{s[0]}, url, c, handlers)
 		case []string:
-			var newSlice []string
-			for _, m := range ms.([]string) {
+			v := ms.([]string)
+			var newSlice = make([]string, 0, len(v))
+			for _, m := range v {
 				s := strings.Split(m, ":")
 				newSlice = append(newSlice, s[0])
 			}
