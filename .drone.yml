@@ -1,79 +1,5 @@
 ---
 kind: pipeline
-name: go110
-
-platform:
-  os: linux
-  arch: amd64
-
-clone:
-  disable: true
-
-workspace:
-  base: /go
-  path: src/gitea.com/lunny/tango
-
-steps:
-  - name: git
-    pull: default
-    image: plugins/git:next
-    settings:
-      depth: 50
-      tags: true
-
-  - name: test
-    pull: default
-    image: golang:1.10
-    commands:
-      - go get -t -d -v ./...
-      - go build -v
-      - go vet ./...
-      - go test -v -race -coverprofile=coverage.txt -covermode=atomic
-    when:
-      event:
-      - push
-      - pull_request
-
----
-kind: pipeline
-name: go111
-
-platform:
-  os: linux
-  arch: amd64
-
-clone:
-  disable: true
-
-workspace:
-  base: /go
-  path: src/tango111
-
-steps:
-- name: git
-  pull: default
-  image: plugins/git:next
-  settings:
-    depth: 50
-    tags: true
-
-- name: test
-  pull: default
-  image: golang:1.11
-  environment:
-    GO111MODULE: on
-    GOPROXY: https://goproxy.cn
-  commands:
-    - go build -v
-    - go vet ./...
-    - go test -v -race -coverprofile=coverage.txt -covermode=atomic
-  when:
-    event:
-    - push
-    - pull_request
-
----
-kind: pipeline
 name: go112
 
 platform:
@@ -82,10 +8,6 @@ platform:
 
 clone:
   disable: true
-
-workspace:
-  base: /go
-  path: src/tango112
 
 steps:
 - name: git
