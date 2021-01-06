@@ -386,14 +386,19 @@ func (ctx *Context) DecodeXML(obj interface{}) error {
 }
 
 // Download provides a locale file to http client
-func (ctx *Context) Download(fpath string) error {
+func (ctx *Context) Download(fpath string, dlNames ...string) error {
 	f, err := os.Open(fpath)
 	if err != nil {
 		return err
 	}
 	defer f.Close()
 
-	fName := filepath.Base(fpath)
+	var fName string
+	if len(dlNames) > 0 {
+		fName = dlNames[0]
+	} else {
+		fName = filepath.Base(fpath)
+	}
 	ctx.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"%v\"", fName))
 	_, err = io.Copy(ctx, f)
 	return err
