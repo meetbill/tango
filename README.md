@@ -1,9 +1,7 @@
 Tango [简体中文](README_CN.md)
 =======================
 
-[![Build Status](https://drone.gitea.com/api/badges/lunny/tango/status.svg)](https://drone.gitea.com/lunny/tango) [![](http://gocover.io/_badge/gitea.com/lunny/tango)](http://gocover.io/gitea.com/lunny/tango)
-[![](https://goreportcard.com/badge/gitea.com/lunny/tango)](https://goreportcard.com/report/gitea.com/lunny/tango)
-[![Join the chat at https://img.shields.io/discord/323705316027924491.svg](https://img.shields.io/discord/323705316027924491.svg)](https://discord.gg/7Ckxjwu)
+[![Build Status](https://drone.gitea.com/api/badges/lunny/tango/status.svg)](https://drone.gitea.com/lunny/tango) [![badge](https://covergates.com/api/v1/reports/bt0k07q23akg00ac0fv0/badge)](https://covergates.com/report/gitea/lunny/tango) [![](https://goreportcard.com/badge/gitea.com/lunny/tango)](https://goreportcard.com/report/gitea.com/lunny/tango) [![Join the chat at https://img.shields.io/discord/323705316027924491.svg](https://img.shields.io/discord/323705316027924491.svg)](https://discord.gg/7Ckxjwu)
 
 ![Tango Logo](logo.png)
 
