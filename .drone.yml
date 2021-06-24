@@ -36,5 +36,5 @@ steps:
   image: covergates/drone-covergates
   settings:
     report_id: bt0k07q23akg00ac0fv0
-    report: coverage.txt
-    type: lcov
+    report: ./coverage.txt
+    type: cover
